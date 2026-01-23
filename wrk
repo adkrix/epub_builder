@@ -1,0 +1,28 @@
+#!/bin/bash
+
+while getopts "cfeEp" opt; do
+  case $opt in
+    c)
+      clear # console
+    ;;
+    f)
+      dart format .
+    ;;
+    e)
+      mkdir -p example_out
+      cd example/ || exit
+      dart epub_builder_example_min.dart
+      exit 0
+    ;;
+    E)
+      mkdir -p example_out
+      cd example/ || exit
+      dart epub_builder_example_max.dart
+      exit 0
+    ;;
+    *)
+      echo "Loosing option"
+      exit 0
+    ;;
+  esac
+done
