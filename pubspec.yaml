@@ -26,13 +26,13 @@ platforms:
   ios:
   linux:
   macos:
-  web:
   windows:
+  web:
 
 topics:
   - epub
   - epub3
-  - epub generator
-  - epub builder
-  - epub creator
+  - generator
+  - builder
+  - creator
 
