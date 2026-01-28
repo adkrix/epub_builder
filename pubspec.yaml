@@ -1,9 +1,8 @@
 name: epub_builder
 version: 0.1.0
-description: Simple epub file builder (epub3).
+description: A simple epub3 file builder with a minimal set of input data (authors, title, chapter list) and additional optional parameters.
 homepage: https://github.com/adkrix/epub_builder
 repository: https://github.com/adkrix/epub_builder
-
 
 environment:
   sdk: ^3.9.0

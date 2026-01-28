@@ -8,18 +8,34 @@ while getopts "cfeEp" opt; do
     f)
       dart format .
     ;;
+
     e)
       mkdir -p example_out
       cd example/ || exit
       dart epub_builder_example_min.dart
       exit 0
     ;;
+
     E)
       mkdir -p example_out
       cd example/ || exit
       dart epub_builder_example_max.dart
       exit 0
     ;;
+
+    p)
+      # production release
+      VERSION=$(yq -r .version pubspec.yaml)
+      CURRENT_TAG=$(git tag -l "v$VERSION")
+
+      if [[ "$CURRENT_TAG" == "v$VERSION" ]]; then
+        echo "Update version before"
+      else
+        git commit -am "v$VERSION" && git tag -a "v$VERSION" -m "v$VERSION"
+        git push origin "v$VERSION"
+      fi
+    ;;
+
     *)
       echo "Loosing option"
       exit 0
