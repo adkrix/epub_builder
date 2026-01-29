@@ -1,6 +1,6 @@
 ## 0.1.0
 
-- Initial version.
+Initial version.
 - bais functionality
 - book authors
 - book title
@@ -9,3 +9,10 @@
 - anchors in chapter (optional)
 ## 0.1.1
 - update reference information
+
+## 0.2.0
+Add metadata fields: 
+- identifier
+- language
+- description
+- published
