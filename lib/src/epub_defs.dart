@@ -9,7 +9,7 @@ class EpubDefs {
   static const containerPath = 'META-INF/container.xml';
 
   /// content root directory
-  static const root = 'OEBPS';
+  static const root = 'EPUB';
 
   /// opf file name
   static const opfArchPath = '$root/package.opf';

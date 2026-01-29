@@ -8,3 +8,9 @@
 - image/webp *.webp
 
 ## add chapter  children
+
+## add manifest parameters 
+- language
+- description
+
+## EpubChapter.create({String? base}) for pretty file names

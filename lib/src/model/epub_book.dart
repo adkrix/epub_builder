@@ -29,6 +29,10 @@ class EpubBook {
   factory EpubBook.create({
     required String title,
     required List<String> authors,
+    String? description,
+    String? published,
+    String? identifier,
+    String language = 'en',
     String cssContent = '',
     EpubImage? coverImage,
     String? navigationTitle,
@@ -36,7 +40,14 @@ class EpubBook {
   }) {
     return EpubBook(
       manifest: <ManifestItem>[],
-      metadata: Metadata.create(title, authors),
+      metadata: Metadata.create(
+        title,
+        authors,
+        description: description,
+        published: published,
+        language: language,
+        identifier: identifier,
+      ),
       spine: <SpineItem>[],
       chapters: <EpubChapter>[],
       cssContent: cssContent,
@@ -53,5 +64,8 @@ class EpubBook {
 
   String get identifier => metadata.identifier;
   String get title => metadata.title;
+  String? get description => metadata.description;
   List<String> get authors => metadata.creators;
+  String get language => metadata.language;
+  String? get published => metadata.published;
 }

@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:markdown/markdown.dart';
+import 'package:markdown/markdown.dart' as md;
 import 'package:path/path.dart';
 import 'package:yaml/yaml.dart';
 
@@ -53,11 +53,16 @@ List<SrcContent> loadChaptersSrc(String path) {
 
     if (mdLines[0].substring(0, 2) == '# ') {
       title = mdLines[0].substring(2);
-      content = markdownToHtml(mdLines.skip(1).join('\n'));
+      content = mdLines.skip(1).join('\n');
     } else {
       title = '***';
-      content = markdownToHtml(mdLines.join('\n'));
+      content = mdLines.join('\n');
     }
+
+    content = md.markdownToHtml(
+      content,
+      inlineSyntaxes: [md.StrikethroughSyntax()],
+    );
 
     chapterList.add(SrcContent(title: title, content: content));
   }

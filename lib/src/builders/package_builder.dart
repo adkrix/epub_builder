@@ -15,6 +15,10 @@ class PackageBuilder {
 
   xml.XmlBuilder build() {
     final uid = book.metadata.identifier;
+    bool isIsbn = book.metadata.identifier.substring(0, 9) == 'urn:isbn:';
+
+    // pub-identifier
+
     builder.element(
       'package',
       namespaces: {EpubDefs.opfNS: null},
@@ -28,16 +32,30 @@ class PackageBuilder {
             builder.element(
               'identifier',
               namespace: dcUri,
-              attributes: {'id': uid},
+              attributes: {'id': isIsbn ? 'pub-identifier' : uid},
+              nest: uid,
             );
             builder.element('title', namespace: dcUri, nest: book.title);
-            builder.element('language', namespace: dcUri, nest: 'en');
+            if (book.description != null) {
+              builder.element(
+                'description',
+                namespace: dcUri,
+                nest: book.description,
+              );
+            }
+
+            builder.element('language', namespace: dcUri, nest: book.language);
 
             for (final author in book.authors) {
               builder.element('creator', namespace: dcUri, nest: author);
             }
 
             final now = DateTime.now().toUtc();
+
+            if (book.published != null) {
+              builder.element('date', namespace: dcUri, nest: book.published);
+            }
+
             builder.element(
               'meta',
               attributes: {'property': 'dcterms:modified'},

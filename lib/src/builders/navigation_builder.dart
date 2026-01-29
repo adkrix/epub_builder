@@ -24,7 +24,10 @@ class NavigationBuilder {
           'head',
           nest: () {
             builder.element('meta', attributes: {'charset': 'utf-8'});
-            builder.element('link', attributes: {'rel': 'stylesheet', 'href': EpubDefs.cssHref});
+            builder.element(
+              'link',
+              attributes: {'rel': 'stylesheet', 'href': EpubDefs.cssHref},
+            );
             builder.element('title', nest: book.title);
           },
         );
@@ -41,7 +44,7 @@ class NavigationBuilder {
                   builder.element(
                     'h1',
                     attributes: {'class': 'title'},
-                    nest: 'Table of Contents',
+                    nest: book.navigationTitle!.trim(),
                   );
                 }
 

@@ -34,6 +34,7 @@ List<EpubChapter> loadRichChapters(String path) {
 void main(List<String> args) {
   final manifest = loadManifest(srcDir);
   final cssContent = '''
+  del { text-decoration: line-through; }
   /* In navigation page: ordered list item with roman numbers */
   #toc ol {list-style-type: upper-roman;}
   #toc ol ol {list-style-type: lower-alpha;}
@@ -47,10 +48,14 @@ void main(List<String> args) {
   final book = EpubBook.create(
     title: manifest.title,
     authors: manifest.authors,
+    identifier: 'urn:isbn:9780745310350', //ISBN
+    language: 'la',
+    description: 'Exemplum descriptionis ad probandum',
+    published: '2025-01-23',
     cssContent: cssContent,
     coverImage: EpubImage(bytes: imageBytes, type: ImageMimeType.jpeg),
     navigationInSpine: true,
-    navigationTitle: 'table of contents',
+    navigationTitle: 'Index rerum', // table of content
   );
 
   final chapters = loadRichChapters(srcDir);
