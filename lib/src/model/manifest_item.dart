@@ -1,3 +1,4 @@
+/// manifest item structure
 class ManifestItem {
   final String id;
   final String href;

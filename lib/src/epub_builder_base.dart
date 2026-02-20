@@ -6,23 +6,24 @@ import 'builders/builders.dart';
 import 'epub_defs.dart';
 import 'model/model.dart';
 
-///
+/// Base epub builder
 class EpubBuilder {
   final EpubBook book;
   final bool pretty;
   const EpubBuilder(this.book, {this.pretty = true});
 
+  /// encode to bin
   List<int>? encode() {
     final archive = Archive();
     _write(archive);
     return ZipEncoder().encode(archive);
   }
-
+  /// create archive
   void _write(Archive archive) {
-    //   mimetype
+    ///   mimetype
     archive.addFile(_mimetype());
 
-    // META-INF/container.xml
+    /// META-INF/container.xml
     archive.addFile(
       ArchiveFile.string(EpubDefs.containerPath, EpubDefs.containerContent),
     );
@@ -64,6 +65,7 @@ class EpubBuilder {
     );
   }
 
+  /// add _mimetype file
   ArchiveFile _mimetype() {
     return ArchiveFile.noCompress(
       'mimetype',
@@ -72,6 +74,7 @@ class EpubBuilder {
     );
   }
 
+  /// add chapter to archive
   void _writeChapter(
     Archive archive,
     EpubChapter chapter,
@@ -88,6 +91,7 @@ class EpubBuilder {
     }
   }
 
+  /// add xml file to archive
   ArchiveFile _xmlFile(String name, xml.XmlBuilder builder) {
     final bytes = utf8.encode(
       builder.buildDocument().toXmlString(pretty: pretty),
@@ -95,6 +99,7 @@ class EpubBuilder {
     return ArchiveFile(name, bytes.length, bytes);
   }
 
+  /// add css manifest to archive
   void _anifestCss() {
     final css = ManifestItem(
       id: 'css',
@@ -104,6 +109,7 @@ class EpubBuilder {
     book.manifest.add(css);
   }
 
+  /// add cover image to archive
   List<ArchiveFile> _addCoverImage() {
     final coverImage = book.coverImage;
     if (coverImage == null) return [];

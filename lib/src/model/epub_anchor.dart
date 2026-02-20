@@ -1,3 +1,4 @@
+/// Anchor object
 class EpubAnchor {
   late final String _hash;
   late final String _title;

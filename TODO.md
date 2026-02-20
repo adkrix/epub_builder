@@ -6,7 +6,6 @@
 - image/png *.png
 - image/svg+xml	*.svg
 - image/webp *.webp
-
 ## add chapter  children
 
 ## add manifest parameters 

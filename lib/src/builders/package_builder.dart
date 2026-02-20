@@ -4,6 +4,7 @@ import '../epub_defs.dart';
 import '../util.dart';
 import '../model/model.dart';
 
+/// Package opf xml file builder
 class PackageBuilder {
   final EpubBook book;
   late final xml.XmlBuilder builder;

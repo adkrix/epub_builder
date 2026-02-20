@@ -1,5 +1,6 @@
 import 'package:uuid/uuid.dart';
 
+/// Epub metadata
 class Metadata {
   final String title;
   late final List<String> creators;

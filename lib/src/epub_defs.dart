@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math' as math;
 
+/// Main epub definitions
 class EpubDefs {
   /// Open Packaging Format namespace
   static const opfNS = 'http://www.idpf.org/2007/opf';

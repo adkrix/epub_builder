@@ -3,6 +3,7 @@ import 'package:xml/xml.dart' as xml;
 
 import '../model/model.dart';
 
+/// Epub navigation builder. Create xml
 class NavigationBuilder {
   final EpubBook book;
   late final xml.XmlBuilder builder;

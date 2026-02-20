@@ -4,6 +4,7 @@ import 'epub_image.dart';
 import 'spine_item.dart';
 import 'metadata.dart';
 
+/// Epub book structure
 class EpubBook {
   final List<ManifestItem> manifest;
   final Metadata metadata;

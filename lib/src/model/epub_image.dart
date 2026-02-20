@@ -1,5 +1,6 @@
 import 'const.dart';
 
+/// Epub image object
 class EpubImage {
   final List<int> bytes;
   final ImageMimeType type;

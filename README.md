@@ -43,8 +43,12 @@ void main() {
 }
 ```
 
-- [minimalistic example](example/epub_builder_example_min.dart)
-- [Full example](example/epub_builder_example_max.dart)
+- [minimalistic example](example/example_min.dart)
+- [Full example](example/example_max.dart)
+
+## Edit EpubBook.create data as Map<String, String?> object
+- see package https://pub.dev/packages/config_map_form
+- see example https://github.com/adkrix/config_map_form/blob/main/example/lib/epub_form.dart
 
 ## Development
 Install `dart`
