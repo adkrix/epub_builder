@@ -2,6 +2,7 @@ import 'package:epub_builder/src/model/epub_anchor.dart';
 
 import '../epub_defs.dart';
 import 'manifest_item.dart';
+
 /// Epub chapter object
 class EpubChapter {
   String? _base;

@@ -25,5 +25,5 @@ enum ImageMimeType {
     } catch (e) {
       return null;
     }
-  }      
+  }
 }

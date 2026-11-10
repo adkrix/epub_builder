@@ -18,6 +18,7 @@ class EpubBuilder {
     _write(archive);
     return ZipEncoder().encode(archive);
   }
+
   /// create archive
   void _write(Archive archive) {
     ///   mimetype
@@ -38,7 +39,7 @@ class EpubBuilder {
     book.manifest.add(nav);
 
     /// css
-    _anifestCss();
+    _manifestCss();
 
     /// cover-image
     final coverImageFiles = _addCoverImage();
@@ -100,7 +101,7 @@ class EpubBuilder {
   }
 
   /// add css manifest to archive
-  void _anifestCss() {
+  void _manifestCss() {
     final css = ManifestItem(
       id: 'css',
       href: EpubDefs.cssHref,
@@ -140,10 +141,9 @@ class EpubBuilder {
       ArchiveFile.string(
         EpubDefs.textArchPath('00-title'),
         EpubDefs.bodyToXhtml(
-          title: '',
+          title: book.title,
           body:
               '''<img src="../${coverManifestItem.href}" alt="Cover image"/>
-          <h1>${book.title}</h1>
           ${book.authors.map((author) => '<h2>$author</h2>').join()}
           ''',
         ),

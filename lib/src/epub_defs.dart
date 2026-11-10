@@ -30,7 +30,7 @@ class EpubDefs {
 
   /// Container content
   static const containerContent =
-      '''<?xml version="1.0" encoding="UTF-8"?>
+  '''<?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="urn:oasis:names:tc:opendocument:xmlns:container" version="1.0">
    <rootfiles>
       <rootfile full-path="$opfArchPath" media-type="application/oebps-package+xml"/>
@@ -56,16 +56,17 @@ class EpubDefs {
     required String body,
     String? id,
   }) {
+    final safeTitle = const HtmlEscape().convert(title);
     final idAttr = id != null ? ' id="$id"' : '';
     return '''<?xml version="1.0" encoding="utf-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
   <meta charset="utf-8"/>
-  <title>$title</title>
-  <link rel="stylesheet" href="../$cssHref">
+  <title>$safeTitle</title>
+  <link rel="stylesheet" href="../$cssHref"/>
 </head>
 <body>
-  <h1$idAttr>$title</h1>
+  <h1$idAttr>$safeTitle</h1>
   $body
 </body>
 </html>

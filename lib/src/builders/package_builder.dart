@@ -16,14 +16,11 @@ class PackageBuilder {
 
   xml.XmlBuilder build() {
     final uid = book.metadata.identifier;
-    bool isIsbn = book.metadata.identifier.substring(0, 9) == 'urn:isbn:';
-
-    // pub-identifier
 
     builder.element(
       'package',
       namespaces: {EpubDefs.opfNS: null},
-      attributes: {'version': '3.0', 'unique-identifier': uid}, // [1]
+      attributes: {'version': '3.0', 'unique-identifier': 'pub-identifier'},
       nest: () {
         const dcUri = 'http://purl.org/dc/elements/1.1/';
         builder.element(
@@ -33,7 +30,7 @@ class PackageBuilder {
             builder.element(
               'identifier',
               namespace: dcUri,
-              attributes: {'id': isIsbn ? 'pub-identifier' : uid},
+              attributes: {'id': 'pub-identifier'},
               nest: uid,
             );
             builder.element('title', namespace: dcUri, nest: book.title);
@@ -77,7 +74,6 @@ class PackageBuilder {
       'manifest',
       nest: () {
         for (var item in book.manifest) {
-          print(item.id);
           builder.element('item', attributes: item.attributes);
         }
       },
@@ -89,7 +85,6 @@ class PackageBuilder {
   void spine() {
     builder.element(
       'spine',
-      attributes: {'toc': 'ncx'},
       nest: () {
         for (var i in book.spine) {
           builder.element('itemref', attributes: i.attributes);

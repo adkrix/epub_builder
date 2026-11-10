@@ -46,7 +46,7 @@ void main(List<String> args) {
   final imageBytes = File(coverImagePath).readAsBytesSync();
 
   final book = EpubBook.create(
-    title: manifest.title,
+    title: 'Max: ${manifest.title}',
     authors: manifest.authors,
     identifier: 'urn:isbn:9780745310350', //ISBN
     language: 'la',

@@ -11,7 +11,7 @@ void main(List<String> args) {
   final manifest = loadManifest(srcDir);
 
   final book = EpubBook.create(
-    title: manifest.title,
+    title: 'Min: ${manifest.title}',
     authors: manifest.authors,
   );
 

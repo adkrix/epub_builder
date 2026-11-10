@@ -1,5 +1,6 @@
 # https://dart.dev/guides/libraries/private-files
 
+.context/
 # user example generated books
 example_out
 
