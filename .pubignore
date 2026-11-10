@@ -3,5 +3,6 @@ epubcheck-5.1.0
 test
 .idea
 pubspec.lock
-example
 example_out
+TODO.md
+wrk

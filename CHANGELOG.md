@@ -1,3 +1,12 @@
+## 0.2.3
+
+- Fix invalid XHTML (self-closing `<link/>`) — корректное открытие на PocketBook.
+- Escape `title` in `bodyToXhtml` via `HtmlEscape`.
+- Use `pub-identifier` for `dc:identifier` / `unique-identifier` (valid NCName).
+- Remove `toc="ncx"` from `<spine>` (NCX is not generated).
+- Cover page: `title = book.title` (no empty `<title>`).
+- Rename `_anifestCss` → `_manifestCss`.
+
 ## 0.2.2
 - fix ImageMimeType; add docs
 - 
